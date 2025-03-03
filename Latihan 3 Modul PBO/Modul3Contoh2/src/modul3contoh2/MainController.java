@@ -14,46 +14,51 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
+
 /**
  *
  * @author Arip Ikbal Fadilah
  */
 public class MainController implements Initializable {
-    
+
     @FXML
     private TextField inputUsername;
-    
+
     @FXML
     private PasswordField inputPassword;
-    
+
     @FXML
     private Button buttonLogin;
-    
+
     @FXML
     private Label labelError;
-    
+
     @FXML
-    private void handleButtonAction(ActionEvent event) throws Exception{
+    private void handleButtonLoginAction(ActionEvent event) throws Exception {
         checkLogin();
     }
-    
-    private void checkLogin() throws Exception {
-        if(inputUsername.getText().toString().equals("admin") &&
+
+    private void checkLogin() throws Exception{
+        
+        if(inputUsername.getText().toString().equals("admin")&&
                 inputPassword.getText().toString().equals("123")){
             labelError.setText("Login Sukses !");
+            
+            Main main = new Main();
+            main.changeScene("Dashboard.fxml");
+            
         }
         else if(inputUsername.getText().isEmpty() &&
                 inputPassword.getText().isEmpty()){
-            labelError.setText("Isi Username Dan Password !");
+            labelError.setText("Isi Username dan Password !");
         }
         else{
-            labelError.setText("Usernmae atau password salah !");
+            labelError.setText("Username atau Password Salah !");
         }
     }
-    
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
-    
+    }
 }
